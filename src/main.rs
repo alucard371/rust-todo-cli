@@ -1,11 +1,21 @@
-use std::collections::HashMap
+use std::collections::HashMap;
 
 fn main() {
     let action = std::env::args().nth(1).expect("Please specify an action");
     let item = std::env::args().nth(2).expect("Please specify an item");
     
     println!("{:?}, {:?}", action, item);
-    
+
+    let mut todo = Todo {
+        map: HashMap::new(),
+    };
+    if action == "add" {
+        todo.insert(item);
+        match todo.save() {
+            Ok(_) => println!("todo saved"),
+            Err(why) => println!("An error occurred: {}", why),
+        }
+    }
 }
 
 struct Todo {
