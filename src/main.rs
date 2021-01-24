@@ -12,3 +12,11 @@ struct Todo {
     // use rust built in HashMap to store key - val pairs
     map: HashMap<String, bool>,
 }
+
+impl Todo {
+    fn insert(&mut self, key:String) {
+        // insert a new item into our map
+        // We pass true as value
+        self.map.insert(key, true);
+    }
+}
